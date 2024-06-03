@@ -1,0 +1,15 @@
+<!-- templates/accounts/logged_out.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Logged Out</h2>
+        <p>You have been logged out. <a href="{% url 'login' %}">Login again</a></p>
+    </div>
+</body>
+</html>
