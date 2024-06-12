@@ -1,31 +1,67 @@
-<!-- templates/marketing/index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Marketing</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            margin-top: 2rem;
+        }
+        .section-title {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .btn-upload {
+            margin-top: 1rem;
+        }
+        .card {
+            margin: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>Campanhas</h2>
-        <ul>
-            {% for campanha in campanhas %}
-                <li>
-                    {{ campanha.nome }} - <a href="{% url 'download_campanha' campanha.id %}">Download</a>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <h2>Materiais de Apoio</h2>
-        <ul>
-            {% for material in materiais %}
-                <li>
-                    {{ material.nome }} - <a href="{% url 'download_material' material.id %}">Download</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="section-title">Campanhas</h2>
+                        <ul class="list-group">
+                            {% for campanha in campanhas %}
+                                <li class="list-group-item">
+                                    {{ campanha.nome }} - <a href="{% url 'download_campanha' campanha.id %}" class="btn btn-sm btn-outline-primary">Download</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'upload_campanha' %}" class="btn btn-primary btn-block btn-upload">Adicionar Campanha</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="section-title">Materiais de Apoio</h2>
+                        <ul class="list-group">
+                            {% for material in materiais %}
+                                <li class="list-group-item">
+                                    {{ material.nome }} - <a href="{% url 'download_material' material.id %}" class="btn btn-sm btn-outline-primary">Download</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'upload_material_apoio' %}" class="btn btn-primary btn-block btn-upload">Adicionar Material de Apoio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
