@@ -77,14 +77,16 @@ WSGI_APPLICATION = 'MaterialVidaCard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'materialvidacarddb',
-        'USER': 'materialvidacarduser',
-        'PASSWORD': 'mudar123@',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'materialvidacard_db',  # Nome do banco de dados que você criou
+        'USER': 'postgres',  # Nome de usuário do PostgreSQL
+        'PASSWORD': 'footies',  # Senha do usuário do PostgreSQL
+        'HOST': 'localhost',  # Host onde o PostgreSQL está rodando
+        'PORT': '5432',  # Porta padrão do PostgreSQL
     }
 }
 
@@ -113,7 +115,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -130,6 +131,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
