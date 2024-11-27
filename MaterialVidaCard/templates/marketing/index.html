@@ -3,44 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campanhas Vida Card</title>
+    <title>Plataforma Vida Card</title>
     {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Campanhas Vida Card</h1>
-    </header>
 
-    <!-- Section com Container e Divs lado a lado -->
-    <section>
-        <div class="container">
-            <div class="left-content">
-                <h2>Campanhas</h2>
-                <ul>
-                    {% for file in campanhas %}
-                        <li>
-                            {{ file.name }}
-                            - <a href="{{ file.webViewLink }}" target="_blank">Visualizar</a>
-                            - <a href="{{ file.webContentLink }}" target="_blank">Download</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+    <!-- Navbar com curva -->
+    <header class="curved-header text-center">
+        <img src="{% static 'images/logo3.png' %}" alt="Vida Card Franchising" width="auto" height="auto" class="d-inline-block align-text-top logo">
+    </header>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container content-container">
+        <div class="row mb-4">
+            <!-- Coluna do Texto de Boas-Vindas -->
+            <div id="welcome-column" class="col-md-6 text-center text-md-start">
+                <h1 class="welcome-text">Bem-vindo à plataforma das campanhas publicitárias do Vida&nbsp;Card!</h1>
             </div>
-            <div class="right-content">
-                <h2>Materiais de Apoio</h2>
-                <ul>
-                    {% for file in materiais_apoio %}
-                        <li>
-                            {{ file.name }}
-                            - <a href="{{ file.webViewLink }}" target="_blank">Visualizar</a>
-                            - <a href="{{ file.webContentLink }}" target="_blank">Download</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+
+            <!-- Coluna da Imagem -->
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/banner-atual.png' %}" class="img-fluid" alt="Banner Campanha">
             </div>
         </div>
-    </section>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="select-container">
+                    <!-- Select de Campanha -->
+                    <div id="campanha-container">
+                        <p class="campaign-text">Baixe aqui a campanha do mês:</p>
+                        <form method="GET">
+                            <div class="mb-3">
+                                <label for="campanhaSelect" class="form-label">Selecione uma campanha:</label>
+                                <select id="campanhaSelect" name="selected_campaign" class="form-select" onchange="this.form.submit()">
+                                    <option selected disabled>Escolha uma campanha</option>
+                                    {% for file in campanhas %}
+                                        <option value="{{ file.id }}" {% if file.id == selected_campaign_id %}selected{% endif %}>{{ file.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </form>
+                        <!-- Botões de Visualizar e Download para Campanha -->
+                        {% if selected_campaign %}
+                            <a href="{{ selected_campaign.webViewLink }}" target="_blank" class="btn btn-primary btn-sm mt-1" aria-label="Visualizar {{ selected_campaign.name }}">Visualizar</a>
+                            <a href="{{ selected_campaign.webContentLink }}" class="btn btn-success btn-sm mt-1" download aria-label="Download de {{ selected_campaign.name }}">Download</a>
+                        {% endif %}
+                    </div>
+        
+                    <!-- Select de Material de Apoio -->
+                    <div>
+                        <p class="material-text">Está procurando por algum material em vídeo? Veja se encontra aqui:</p>
+                        <form method="GET">
+                            <div class="mb-3">
+                                <label for="materialSelect" class="form-label">Selecione um material de apoio:</label>
+                                <select id="materialSelect" name="selected_material" class="form-select" onchange="this.form.submit()">
+                                    <option selected disabled>Escolha um material</option>
+                                    {% for file in materiais_apoio %}
+                                        <option value="{{ file.id }}" {% if file.id == selected_material_id %}selected{% endif %}>{{ file.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </form>
+                        <!-- Botões de Visualizar e Download para Material de Apoio -->
+                        {% if selected_material %}
+                            <a href="{{ selected_material.webViewLink }}" target="_blank" class="btn btn-primary btn-sm mt-1" aria-label="Visualizar {{ selected_material.name }}">Visualizar</a>
+                            <a href="{{ selected_material.webContentLink }}" class="btn btn-success btn-sm mt-1" download aria-label="Download de {{ selected_material.name }}">Download</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

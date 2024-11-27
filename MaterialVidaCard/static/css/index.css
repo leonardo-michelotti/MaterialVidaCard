@@ -1,54 +1,87 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Montserrat', sans-serif;
+    background: url("../images/background.png") no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
-    padding: 20px;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.left-content, .right-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    width: 48%; /* Cada div ocupa cerca de metade da largura da tela */
-}
-
-h1, h2 {
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
     padding: 0;
 }
 
-li {
-    background-color: #fff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+.logo {
+    max-width: 200px; /* Ajuste o tamanho máximo do logotipo */
+    height: auto;
+    margin-left: 2rem; /* Adiciona um espaçamento à esquerda para posicionar o logo */
 }
 
-a {
-    color: #1e90ff;
-    text-decoration: none;
+/* Container flex para alinhar os selects lado a lado */
+.select-container {
+    display: flex;
+    justify-content: space-between; /* Mantém os selects espaçados */
+    gap: 2rem; /* Espaçamento entre os selects */
 }
 
-a:hover {
-    text-decoration: underline;
+/* Alinha o primeiro select (campanha) um pouco mais à direita */
+#campanha-container {
+    margin-left: 5rem; /* Ajusta o espaçamento à direita do select da campanha */
+}
+
+/* Define que os selects ocupem o mesmo espaço */
+.select-container .form-select {
+    flex: 1; /* Faz com que os selects ocupem o mesmo espaço */
+}
+
+/* Ajusta o label e select para manter o alinhamento */
+.select-container .mb-3 {
+    flex: 1; /* Garante que as divs mb-3 também ocupem a mesma largura */
+}
+
+
+.curved-header{
+    position: relative;
+    background-color: transparent;
+    padding-top: 2rem;  /* Aumente a altura superior do cabeçalho */
+    padding-bottom: 2rem; /* Adicione padding inferior para aumentar a altura */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha o logotipo à esquerda */
+}
+
+/* Estilo adicional para garantir espaçamento e layout */
+.content-container {
+    padding-top: 100px; /* Aumenta o padding superior para empurrar o conteúdo principal para baixo */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcome-text {
+    color: #00a98f;
+    border-left: 3px solid #A2BF36;
+    padding-left: 2rem;
+    line-height: 1.2;
+    /*letter-spacing: 0.5;*/
+}
+
+#welcome-column {
+    padding-left: 5rem; /* Ajuste conforme necessário para afastar a coluna da borda esquerda */
+}
+
+
+.campaign-text,
+.material-text {
+    color: #A2BF36;
+    font-weight: bold;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #3AB0B0;
+    border-color: #3AB0B0;
+}
+
+.btn-primary:hover {
+    background-color: #2E8A8A;
+    border-color: #2E8A8A;
 }
